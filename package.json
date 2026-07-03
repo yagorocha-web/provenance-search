@@ -1,0 +1,24 @@
+{
+  "name": "arts-and-artifacts",
+  "version": "2.0.0",
+  "description": "Provenance intelligence for artworks, built entirely on free APIs.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build:moma": "node scripts/build-moma-dataset.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.0.1"
+  }
+}
