@@ -1,0 +1,169 @@
+{
+  "artwork": {
+    "title": "Salvator Mundi",
+    "artist": "Leonardo da Vinci",
+    "period": "c. 1500",
+    "medium": "Oil on walnut panel"
+  },
+  "confidenceScore": 0.15,
+  "confidenceRationale": "Two large, multi-decade custody gaps (c.1500–1649 and 1763–1900, plus a further 1958–2005 gap), a disputed attribution among Leonardo scholars, an anomalous roughly 3.5x price jump between the 2013 private sale and the 2017 auction, and an unconfirmed beneficial owner behind the recorded 2017 buyer combine to produce a low confidence score despite extensive media documentation of the work's recent sale history.",
+  "provenanceTimeline": [
+    {
+      "period": "c. 1500",
+      "owner": "Painted by Leonardo da Vinci's workshop, Milan/Florence",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Believed painted for the French royal court, possibly commissioned by King Louis XII or Anne of Brittany. The degree of Leonardo's own hand versus workshop participation is disputed among scholars — see risk flags.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "c. 1500–1649",
+      "owner": null,
+      "isGap": true,
+      "gapNote": "No firm documentary record connects the painting's creation to its first confirmed appearance in the English royal collection in 1649. Roughly a century and a half of custody is unaccounted for in public sources.",
+      "note": null,
+      "sourceUrl": null,
+      "sourceAuthority": null,
+      "verified": false,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1649–1763",
+      "owner": "English Royal Collection (Charles I, then Charles II)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Listed in the 1649 inventory taken after the execution of Charles I; remained with the Royal Collection through the Restoration.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1763–1900",
+      "owner": null,
+      "isGap": true,
+      "gapNote": "The painting drops out of the Royal Collection's documented holdings after the mid-18th century. How and when it left royal ownership, and where it was for roughly the next 140 years, is not established in public sources.",
+      "note": null,
+      "sourceUrl": null,
+      "sourceAuthority": null,
+      "verified": false,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1900–1958",
+      "owner": "Sir Francis Cook / Cook Collection, Doughty House, Richmond",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Acquired by the Cook family and catalogued in their collection, attributed at the time to a follower of Leonardo (the Boltraffio/Luini circle) rather than to Leonardo himself.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1958–2005",
+      "owner": null,
+      "isGap": true,
+      "gapNote": "Sold at Sotheby's London in 1958 for £45 as a damaged, heavily overpainted 'Boltraffio'. The buyer of record and the painting's whereabouts for the following 47 years are not documented in public sources; it resurfaced only in 2005 at a small estate auction in New Orleans.",
+      "note": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "2005–2013",
+      "owner": "Consortium of art dealers (Robert Simon, Alexander Parish, Warren Adelson)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Purchased for about $1,175 at a New Orleans estate auction, then restored by conservator Dianne Modestini and examined by Leonardo scholars, several of whom endorsed a Leonardo attribution ahead of the National Gallery, London's 2011–12 exhibition.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "2013",
+      "owner": "Yves Bouvier (Swiss art dealer / freeport operator)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Acquired privately for a reported price of roughly $80 million.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "2013–2017",
+      "owner": "Dmitry Rybolovlev (Russian businessman, via trust)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Bought the same year from Bouvier for $127.5 million; the large markup later became central to fraud litigation between Rybolovlev and Bouvier.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "2017–present",
+      "owner": "Prince Badr bin Abdullah bin Farhan Al Saud (recorded buyer, acting as proxy)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Sold at Christie's New York on 15 November 2017 for $450.3 million including fees — the highest price ever paid at auction for an artwork. The winning bidder was later identified by the Wall Street Journal and the New York Times as a Saudi prince bidding on behalf of Crown Prince Mohammed bin Salman. The work's public whereabouts since the sale are unconfirmed; a planned 2018 unveiling at the Louvre Abu Dhabi was postponed indefinitely.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    }
+  ],
+  "riskFlags": [
+    {
+      "type": "undisclosed_beneficial_owner",
+      "severity": "high",
+      "detail": "The 2017 Christie's buyer of record, Prince Badr bin Abdullah, was reported by the Wall Street Journal and New York Times to have acted as a proxy bidder for Crown Prince Mohammed bin Salman. Christie's and Saudi officials have not confirmed beneficial ownership.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)"
+    },
+    {
+      "type": "custody_gap",
+      "severity": "medium",
+      "detail": "Roughly 300 combined years of ownership (c.1500–1649, 1763–1900, and part of 1958–2005) are entirely unaccounted for in public sources.",
+      "sourceUrl": null
+    },
+    {
+      "type": "attribution_dispute",
+      "severity": "medium",
+      "detail": "Several Leonardo scholars (including Frank Zöllner and Carmen Bambach) have publicly questioned full autograph attribution to Leonardo, citing the heavy 20th–21st century restoration and workshop-quality passages. The record $450M sale price rests on an attribution that is not universally accepted.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)"
+    },
+    {
+      "type": "not_publicly_viewable",
+      "severity": "low",
+      "detail": "The painting has not been publicly exhibited since the 2017 sale; a planned 2018 Louvre Abu Dhabi unveiling was postponed indefinitely and its current location has not been officially disclosed.",
+      "sourceUrl": null
+    }
+  ],
+  "valuationAssessment": {
+    "providedPrice": "$450,300,000",
+    "expectedRange": "$100,000,000–$180,000,000 (based on the 2013 private-sale comparable of $127.5M)",
+    "anomalous": true,
+    "note": "The 2017 auction price of $450.3M is roughly 3.5x the 2013 private-sale price for the same, unchanged work only four years earlier, and is a multiple of any other Leonardo or Old Master painting ever sold. Given the disputed attribution, this is a significant outlier price."
+  },
+  "authoritiesConsulted": [
+    { "name": "Tavily — provenance & looting research", "domain": "metmuseum.org, getty.edu, interpol.int, unesco.org, artloss.com, lostart.de, lootedart.com, christies.com, sothebys.com, artnet.com, fbi.gov, ifar.org, wikipedia.org", "response": "clear", "sourceUrl": "https://www.christies.com/en/lot/lot-6110563" },
+    { "name": "The Met Museum", "domain": "metmuseum.org", "response": "not_found", "sourceUrl": null },
+    { "name": "Art Institute of Chicago", "domain": "artic.edu", "response": "not_found", "sourceUrl": null },
+    { "name": "MoMA (bundled open dataset)", "domain": "moma.org", "response": "not_found", "sourceUrl": null },
+    { "name": "Europeana", "domain": "europeana.eu", "response": "not_found", "sourceUrl": null },
+    { "name": "Wikipedia", "domain": "wikipedia.org", "response": "clear", "sourceUrl": "https://en.wikipedia.org/wiki/Salvator_Mundi_(Leonardo)" },
+    { "name": "Wikidata", "domain": "wikidata.org", "response": "clear", "sourceUrl": "https://www.wikidata.org/wiki/Q19911244" }
+  ],
+  "passportSignature": {
+    "signedBy": "arts-and-artifacts-agent-v1",
+    "signedAt": "2025-06-15T09:00:00.000Z",
+    "integrityHash": "e5c8970b8260a06ac4c97ddd755430e1d6b678abc709d92fd5966508964ab453",
+    "attestation": "This passport records the results of automated queries to free, public provenance and risk-screening sources, captured as a static snapshot for offline/demo use. It attests to process, not to underlying truth."
+  }
+}

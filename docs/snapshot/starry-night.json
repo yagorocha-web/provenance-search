@@ -1,0 +1,107 @@
+{
+  "artwork": {
+    "title": "The Starry Night",
+    "artist": "Vincent van Gogh",
+    "period": "June 1889",
+    "medium": "Oil on canvas"
+  },
+  "confidenceScore": 1,
+  "confidenceRationale": "Ownership is documented in an unbroken chain from the artist through his brother Theo van Gogh, Theo's widow Johanna van Gogh-Bonger, their son V.W. van Gogh, and dealer Paul Rosenberg, to the Museum of Modern Art's 1941 acquisition — corroborated by MoMA's own catalogue record, Wikipedia, and Wikidata. No custody gaps and no watchlist or loss-registry matches were found.",
+  "provenanceTimeline": [
+    {
+      "period": "June 1889",
+      "owner": "Vincent van Gogh (the artist)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Painted from memory and imagination while a patient at the Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence, France.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1889–1891",
+      "owner": "Theo van Gogh, Paris",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Sent by the artist to his brother and dealer, Theo van Gogh, in Paris shortly after completion.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1891–1925",
+      "owner": "Johanna van Gogh-Bonger, Paris and Amsterdam",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Inherited by Theo's widow after his death in January 1891; Johanna was chiefly responsible for building Vincent van Gogh's posthumous reputation.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1925–1938",
+      "owner": "Vincent Willem van Gogh (V.W. van Gogh), Laren, Netherlands",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Passed to Theo and Johanna's son, the artist's nephew, upon Johanna's death in 1925.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1938–1941",
+      "owner": "Paul Rosenberg, Paris and New York",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Acquired by the Paris dealer Paul Rosenberg, who relocated the gallery's most important stock to New York shortly before the German invasion of France.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1941–present",
+      "owner": "The Museum of Modern Art, New York",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Acquired in 1941 through the Lillie P. Bliss Bequest, where it remains one of the museum's signature works.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802",
+      "sourceAuthority": "MoMA collection record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    }
+  ],
+  "riskFlags": [
+    {
+      "type": "nazi_era_transit",
+      "severity": "low",
+      "detail": "The work passed through Paris dealer Paul Rosenberg's hands in 1938–1941, immediately before the German occupation of France. Rosenberg's own collection was later looted by the Nazis, but this specific painting had already been sold to MoMA in 1941 and does not appear on any loss registry.",
+      "sourceUrl": "https://www.moma.org/collection/works/79802"
+    }
+  ],
+  "valuationAssessment": {
+    "providedPrice": null,
+    "expectedRange": null,
+    "anomalous": false,
+    "note": "No sale price applies; the work entered MoMA's collection via bequest, not purchase."
+  },
+  "authoritiesConsulted": [
+    { "name": "Tavily — provenance & looting research", "domain": "metmuseum.org, getty.edu, interpol.int, unesco.org, artloss.com, lostart.de, lootedart.com, christies.com, sothebys.com, artnet.com, fbi.gov, ifar.org, wikipedia.org", "response": "clear", "sourceUrl": "https://en.wikipedia.org/wiki/The_Starry_Night" },
+    { "name": "The Met Museum", "domain": "metmuseum.org", "response": "not_found", "sourceUrl": null },
+    { "name": "Art Institute of Chicago", "domain": "artic.edu", "response": "not_found", "sourceUrl": null },
+    { "name": "MoMA (bundled open dataset)", "domain": "moma.org", "response": "clear", "sourceUrl": "https://www.moma.org/collection/works/79802" },
+    { "name": "Europeana", "domain": "europeana.eu", "response": "not_found", "sourceUrl": null },
+    { "name": "Wikipedia", "domain": "wikipedia.org", "response": "clear", "sourceUrl": "https://en.wikipedia.org/wiki/The_Starry_Night" },
+    { "name": "Wikidata", "domain": "wikidata.org", "response": "clear", "sourceUrl": "https://www.wikidata.org/wiki/Q45585" }
+  ],
+  "passportSignature": {
+    "signedBy": "arts-and-artifacts-agent-v1",
+    "signedAt": "2025-06-15T09:00:00.000Z",
+    "integrityHash": "dfb24602c8b508318f6ac7b6b1688854c8e5070594770804a1de279405ab166a",
+    "attestation": "This passport records the results of automated queries to free, public provenance and risk-screening sources, captured as a static snapshot for offline/demo use. It attests to process, not to underlying truth."
+  }
+}

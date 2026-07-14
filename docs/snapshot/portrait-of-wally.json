@@ -1,0 +1,147 @@
+{
+  "artwork": {
+    "title": "Portrait of Wally",
+    "artist": "Egon Schiele",
+    "period": "1912",
+    "medium": "Oil on panel"
+  },
+  "confidenceScore": 0,
+  "confidenceRationale": "This provenance includes a non-consensual transfer under Nazi-era persecution in 1939 and a subsequent 12-year U.S. federal forfeiture action — a landmark Nazi-looted-art case. Even though the custodial history is unusually well documented by the historical record, this tool assigns zero confidence because title was never legitimately and voluntarily transferred at the 1939 step, and the matter was only settled financially in 2010 — not exonerated as a matter of clean title.",
+  "provenanceTimeline": [
+    {
+      "period": "1912",
+      "owner": "Egon Schiele (the artist's studio)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Painted in Vienna; the sitter is Walburga 'Wally' Neuzil, Schiele's companion and frequent model.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1912–1925",
+      "owner": null,
+      "isGap": true,
+      "gapNote": "Public sources do not document the painting's custody between its creation in 1912 and Lea Bondi Jaray's acquisition of it by the mid-1920s.",
+      "note": null,
+      "sourceUrl": null,
+      "sourceAuthority": null,
+      "verified": false,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1925–1938",
+      "owner": "Lea Bondi Jaray, Vienna",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Bondi, a Jewish Viennese art dealer, owned the portrait and displayed it in her home.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1939",
+      "owner": "Friedrich Welz (Nazi party member and art dealer)",
+      "isGap": true,
+      "gapNote": "Welz pressured Bondi — who was fleeing Vienna after the 1938 Anschluss — into surrendering the painting. This was a forced transfer under persecution, not a voluntary sale, and is treated here as a break in legitimate title rather than an ordinary change of ownership.",
+      "note": "Bondi later stated Welz threatened to obstruct her emigration unless she handed over the work.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia / United States v. Portrait of Wally case record",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1945–1954",
+      "owner": "Republic of Austria / Österreichische Galerie Belvedere",
+      "isGap": true,
+      "gapNote": "After WWII, Allied forces confiscated Welz's collection. Due to a bureaucratic mix-up the painting was routed to the Belvedere rather than restituted to Bondi, who petitioned unsuccessfully for its return starting in the late 1940s.",
+      "note": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1954–1997",
+      "owner": "Rudolf Leopold / Leopold Collection",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Leopold acquired the painting from the Belvedere in a trade. Bondi died in 1969 without ever recovering it.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "1997–1999",
+      "owner": "Leopold Museum, Vienna (on loan to the Museum of Modern Art, New York)",
+      "isGap": false,
+      "gapNote": null,
+      "note": "While on loan to MoMA for the exhibition 'Egon Schiele: The Leopold Collection,' Bondi's heirs identified the painting. The Manhattan District Attorney subpoenaed it, and the U.S. Attorney's Office later opened the civil forfeiture action United States v. Portrait of Wally, preventing its return to Austria.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    },
+    {
+      "period": "2010–present",
+      "owner": "Leopold Museum, Vienna",
+      "isGap": false,
+      "gapNote": null,
+      "note": "Litigation settled in July 2010: the Leopold Museum paid $19 million to the Estate of Lea Bondi Jaray to retain the painting, with an agreement that its full provenance history be permanently displayed alongside the work.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally",
+      "sourceAuthority": "Wikipedia",
+      "verified": true,
+      "isGeneralKnowledge": false
+    }
+  ],
+  "riskFlags": [
+    {
+      "type": "nazi_era_forced_transfer",
+      "severity": "high",
+      "detail": "The 1939 transfer from Lea Bondi Jaray to Friedrich Welz occurred under Nazi-era persecution and duress, not as a voluntary sale — a textbook forced-sale pattern covered by the Washington Principles on Nazi-Confiscated Art.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally"
+    },
+    {
+      "type": "watchlist_match",
+      "severity": "high",
+      "detail": "This case is catalogued as a landmark Nazi-era looting and restitution matter in lootedart.com's case archive.",
+      "sourceUrl": "https://www.lootedart.com"
+    },
+    {
+      "type": "litigation_history",
+      "severity": "high",
+      "detail": "Subject to a 12-year U.S. federal civil forfeiture action, United States v. Portrait of Wally, following its 1997 seizure while on loan to MoMA.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally"
+    },
+    {
+      "type": "restitution_settlement",
+      "severity": "medium",
+      "detail": "Resolved in 2010 via a $19 million payment from the Leopold Museum to the Estate of Lea Bondi Jaray; the museum retained title to the work as part of the settlement.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally"
+    }
+  ],
+  "valuationAssessment": {
+    "providedPrice": null,
+    "expectedRange": null,
+    "anomalous": false,
+    "note": "No sale price applies; ownership was retained by the Leopold Museum under the 2010 settlement rather than transferred via market sale."
+  },
+  "authoritiesConsulted": [
+    { "name": "Tavily — provenance & looting research", "domain": "metmuseum.org, getty.edu, interpol.int, unesco.org, artloss.com, lostart.de, lootedart.com, christies.com, sothebys.com, artnet.com, fbi.gov, ifar.org, wikipedia.org", "response": "flagged", "sourceUrl": "https://www.lootedart.com" },
+    { "name": "The Met Museum", "domain": "metmuseum.org", "response": "not_found", "sourceUrl": null },
+    { "name": "Art Institute of Chicago", "domain": "artic.edu", "response": "not_found", "sourceUrl": null },
+    { "name": "MoMA (bundled open dataset)", "domain": "moma.org", "response": "not_found", "sourceUrl": null },
+    { "name": "Europeana", "domain": "europeana.eu", "response": "not_found", "sourceUrl": null },
+    { "name": "Wikipedia", "domain": "wikipedia.org", "response": "clear", "sourceUrl": "https://en.wikipedia.org/wiki/Portrait_of_Wally" },
+    { "name": "Wikidata", "domain": "wikidata.org", "response": "not_found", "sourceUrl": null }
+  ],
+  "passportSignature": {
+    "signedBy": "arts-and-artifacts-agent-v1",
+    "signedAt": "2025-06-15T09:00:00.000Z",
+    "integrityHash": "ddf91dd4a2862b6824f9d89c1772aae3224bbd469c3235b5b9cf37371f7c43a9",
+    "attestation": "This passport records the results of automated queries to free, public provenance and risk-screening sources, captured as a static snapshot for offline/demo use. It attests to process, not to underlying truth."
+  }
+}
