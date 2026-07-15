@@ -1,4 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({ path: '.env' });
+if (!process.env.GEMINI_API_KEY) {
+  console.log('GEMINI_API_KEY not in .env, checking process.env directly...');
+}
+console.log('GEMINI_API_KEY loaded:', process.env.GEMINI_API_KEY ? 'YES' : 'NO');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
