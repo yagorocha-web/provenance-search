@@ -1245,6 +1245,7 @@ function explainReasons(d){
   if(flags.some(f=>f.type==='general_knowledge_used'))reasons.push('General knowledge used — part of timeline not from live sources');
   if(sourcesFound<3)reasons.push('Fewer than 3 sources returned results');
   if(flags.some(f=>f.type==='pre1970_gap_non_western_origin'))reasons.push('Pre-1970 provenance gap — UNESCO Convention may apply');
+  if(flags.some(f=>f.type==='anomalous_valuation'))reasons.push('Price inconsistency detected — provided value outside documented market range');
   return reasons;
 }
 

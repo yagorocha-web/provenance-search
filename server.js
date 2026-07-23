@@ -885,6 +885,19 @@ app.post('/api/verify', rateLimiter, async (req, res) => {
       providedPrice: price ? `$${price}` : null, expectedRange: null, anomalous: false, note: ''
     };
 
+    // Deterministic counterpart to the -10 score penalty below: without this, a user only
+    // sees the anomaly if Gemini happened to also mention the price in its own riskFlags,
+    // which the prompt never explicitly asks for (confirmed missing via a live Salvator
+    // Mundi/$500 test).
+    if (valuationAssessment.anomalous) {
+      riskFlags.push({
+        type: 'anomalous_valuation',
+        severity: 'medium',
+        detail: `Provided price ${valuationAssessment.providedPrice} is inconsistent with documented market value ${valuationAssessment.expectedRange}. Significant price discrepancy may indicate misattribution, forgery, or undisclosed damage.`,
+        source: 'Valuation assessment'
+      });
+    }
+
     const confidenceScore = computeConfidenceScore({
       provenanceTimeline,
       riskFlags,
