@@ -7,6 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Spectral:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
 <style>
+/* ══════════════════════════════════════════════════════════════════════
+   MOBILE-FIRST: base rules below target ~360-480px viewports (the primary
+   use case — a museum visitor on a phone). Larger layouts are added via
+   min-width media queries further down, never removed/overridden downward.
+   ══════════════════════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
@@ -36,10 +41,10 @@ body::before{
   pointer-events:none;z-index:0;opacity:.5;
 }
 
-/* ── NAVIGATION ── */
+/* ── NAVIGATION (mobile-first: compact, marketing links hidden) ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:1.25rem 3rem;
+  padding:.85rem 1.1rem;
   display:flex;align-items:center;justify-content:space-between;
   border-bottom:1px solid transparent;
   transition:all .3s;
@@ -51,12 +56,12 @@ nav.scrolled{
 }
 .nav-logo{
   font-family:var(--display);
-  font-size:1.1rem;font-weight:500;
+  font-size:1rem;font-weight:500;
   letter-spacing:.04em;color:var(--ink);
   text-decoration:none;
 }
 .nav-logo span{color:var(--gold);font-style:italic}
-.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;align-items:center;gap:1rem}
 .nav-links a{
   font-family:var(--mono);font-size:.7rem;
   letter-spacing:.08em;text-transform:uppercase;
@@ -64,22 +69,24 @@ nav.scrolled{
   transition:color .15s;
 }
 .nav-links a:hover{color:var(--ink)}
+/* Mobile-first: hide the marketing links, keep only the action CTA — gets the
+   museum visitor to the camera/upload flow with the least chrome possible. */
+.nav-links a:not(.nav-cta){display:none}
 .nav-cta{
-  font-family:var(--mono);font-size:.7rem;
-  letter-spacing:.08em;text-transform:uppercase;
+  font-family:var(--mono);font-size:.65rem;
+  letter-spacing:.06em;text-transform:uppercase;
   border:1px solid var(--ink);color:var(--ink);
-  background:transparent;padding:.45rem 1.1rem;
+  background:transparent;padding:.4rem .8rem;
   border-radius:1px;cursor:pointer;
   transition:all .15s;text-decoration:none;
 }
 .nav-cta:hover{background:var(--ink);color:var(--paper)}
 
-/* ── HERO ── */
+/* ── HERO (mobile-first: compact — the CTA is one short scroll away) ── */
 .hero{
-  min-height:100vh;
   display:flex;flex-direction:column;
   justify-content:center;
-  padding:8rem 3rem 4rem;
+  padding:5.5rem 1.25rem 2rem;
   position:relative;
   overflow:hidden;
 }
@@ -100,40 +107,40 @@ nav.scrolled{
 }
 .hero-content{position:relative;z-index:1;max-width:820px}
 .hero-eyebrow{
-  font-family:var(--mono);font-size:.68rem;
+  font-family:var(--mono);font-size:.62rem;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.75rem;
-  display:flex;align-items:center;gap:.75rem;
+  color:var(--gold);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
 }
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
 .hero-h1{
   font-family:var(--display);
-  font-size:clamp(3rem,7vw,6rem);
-  font-weight:400;line-height:1.05;
-  letter-spacing:-.02em;
-  margin-bottom:2rem;
+  font-size:clamp(1.8rem,7vw,6rem);
+  font-weight:400;line-height:1.1;
+  letter-spacing:-.01em;
+  margin-bottom:1rem;
 }
 .hero-h1 em{font-style:italic;color:var(--gold)}
 .hero-h1 .line2{display:block;font-weight:300}
 .hero-sub{
-  font-size:1.1rem;font-weight:300;
+  font-size:.92rem;font-weight:300;
   color:var(--muted);max-width:520px;
-  line-height:1.7;margin-bottom:3rem;
+  line-height:1.6;margin-bottom:1.5rem;
 }
 .hero-sub strong{color:var(--ink);font-weight:400}
-.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.hero-actions{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
 .btn-primary{
-  font-family:var(--mono);font-size:.75rem;
+  font-family:var(--mono);font-size:.72rem;
   letter-spacing:.08em;text-transform:uppercase;
   background:var(--ink);color:var(--paper);
-  border:none;padding:.85rem 2.25rem;
+  border:none;padding:.75rem 1.75rem;
   border-radius:1px;cursor:pointer;
   transition:all .2s;text-decoration:none;
   display:inline-block;
 }
 .btn-primary:hover{background:var(--gold);transform:translateY(-1px)}
 .btn-ghost{
-  font-family:var(--mono);font-size:.72rem;
+  font-family:var(--mono);font-size:.7rem;
   letter-spacing:.08em;text-transform:uppercase;
   color:var(--muted);cursor:pointer;
   border:none;background:none;
@@ -141,60 +148,45 @@ nav.scrolled{
   transition:color .15s;text-decoration:none;
 }
 .btn-ghost:hover{color:var(--ink)}
-.hero-stats{
-  position:absolute;bottom:3rem;right:3rem;
-  display:flex;gap:3rem;z-index:1;
-}
-.stat{text-align:right}
-.stat-num{
-  font-family:var(--display);font-size:2rem;
-  font-weight:400;color:var(--ink);line-height:1;
-}
-.stat-label{
-  font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted);margin-top:.25rem;
-}
+/* Decorative stat row: desktop-only flourish, hidden on mobile to save vertical space. */
+.hero-stats{display:none}
 
-/* ── HOW IT WORKS ── */
+/* ── HOW IT WORKS (mobile-first: single column) ── */
 .how{
-  padding:6rem 3rem;
+  padding:3rem 1.25rem;
   border-top:1px solid var(--rule);
   background:var(--warm);
 }
 .section-label{
-  font-family:var(--mono);font-size:.65rem;
+  font-family:var(--mono);font-size:.62rem;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:3rem;
-  display:flex;align-items:center;gap:.75rem;
+  color:var(--gold);margin-bottom:1.75rem;
+  display:flex;align-items:center;gap:.6rem;
 }
-.section-label::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-label::before{content:'';width:20px;height:1px;background:var(--gold)}
 .steps{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;position:relative;
-}
-.steps::before{
-  content:'';
-  position:absolute;top:28px;left:8%;right:8%;
-  height:1px;background:var(--rule);z-index:0;
+  display:grid;grid-template-columns:1fr;
+  gap:1.75rem;position:relative;
 }
 .step{
-  display:flex;flex-direction:column;align-items:center;
-  text-align:center;padding:0 1rem;position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:flex-start;
+  text-align:left;position:relative;z-index:1;
+  padding-left:3.25rem;
 }
 .step-num{
-  width:56px;height:56px;border-radius:50%;
+  position:absolute;left:0;top:0;
+  width:44px;height:44px;border-radius:50%;
   border:1px solid var(--rule);
   background:var(--paper);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:.7rem;
-  color:var(--muted);margin-bottom:1rem;
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--muted);
   transition:all .3s;
 }
 .step:hover .step-num{border-color:var(--gold);color:var(--gold);background:var(--warm)}
 .step-title{
-  font-family:var(--display);font-size:.95rem;
-  font-weight:500;margin-bottom:.5rem;
+  font-family:var(--display);font-size:.92rem;
+  font-weight:500;margin-bottom:.35rem;
 }
 .step-desc{
   font-size:.8rem;color:var(--muted);
@@ -203,388 +195,405 @@ nav.scrolled{
 .step-tag{
   font-family:var(--mono);font-size:.58rem;
   letter-spacing:.06em;text-transform:uppercase;
-  color:var(--gold);margin-top:.5rem;
+  color:var(--gold);margin-top:.4rem;
 }
 
-/* ── VERIFY SECTION ── */
+/* ── VERIFY SECTION — the core mobile flow ── */
 .verify-section{
-  padding:6rem 3rem;
+  padding:3rem 1.1rem;
   border-top:1px solid var(--rule);
 }
 .verify-inner{max-width:760px;margin:0 auto}
-.verify-header{margin-bottom:3rem}
+.verify-header{margin-bottom:1.75rem}
 .verify-header h2{
-  font-family:var(--display);font-size:2.5rem;
+  font-family:var(--display);font-size:1.7rem;
   font-weight:400;line-height:1.15;
-  margin-bottom:.75rem;
+  margin-bottom:.6rem;
 }
 .verify-header h2 em{font-style:italic;color:var(--gold)}
-.verify-header p{font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.7}
+.verify-header p{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.6}
 
-/* IMAGE INPUT ROW */
-.image-input-row{
-  display:flex;align-items:center;gap:1rem;
-  margin-bottom:2rem;flex-wrap:wrap;
-}
-.img-btn{
-  font-family:var(--mono);font-size:.7rem;
-  letter-spacing:.06em;text-transform:uppercase;
-  border:1px solid var(--rule);border-radius:1px;
-  background:var(--warm);color:var(--ink);
-  padding:.65rem 1.25rem;cursor:pointer;
-  display:flex;align-items:center;gap:.55rem;
-  transition:all .15s;
-}
-.img-btn:hover{border-color:var(--gold);color:var(--gold)}
-.img-divider{
-  font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--faint);
-}
-.img-preview{
-  display:none;align-items:center;gap:.75rem;
-  padding:.5rem .75rem;border:1px solid var(--rule);
-  border-radius:1px;background:var(--warm);
-}
-.img-preview img{width:36px;height:36px;object-fit:cover;border-radius:1px}
-.img-preview span{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
-.img-preview button{
-  font-family:var(--mono);font-size:.62rem;color:var(--red);
-  background:none;border:none;cursor:pointer;text-decoration:underline;
-}
-.identify-status{
-  font-family:var(--mono);font-size:.68rem;color:var(--gold);
-  font-style:italic;display:none;
-}
+/* Field Mode / Full Report toggle — preference persisted in localStorage */
+.mode-toggle{display:inline-flex;margin-top:1rem;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.mode-btn{font-family:var(--mono);font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;background:var(--paper);color:var(--muted);border:none;padding:.5rem .9rem;cursor:pointer;transition:all .15s}
+.mode-btn+.mode-btn{border-left:1px solid var(--rule)}
+.mode-btn.active{background:var(--ink);color:var(--paper)}
+.mode-btn:hover:not(.active){color:var(--ink)}
 
-/* CAMERA MODAL */
-.camera-modal{
-  display:none;position:fixed;inset:0;z-index:1000;
-  background:rgba(13,12,10,.9);
-  align-items:center;justify-content:center;
-  flex-direction:column;gap:1.25rem;padding:1.5rem;
-}
-.camera-modal video{
-  max-width:min(560px,92vw);max-height:60vh;
-  border:1px solid var(--rule);border-radius:2px;background:#000;
-}
-.camera-modal .cam-actions{display:flex;gap:1rem}
-.cam-btn{
-  font-family:var(--mono);font-size:.72rem;
-  letter-spacing:.07em;text-transform:uppercase;
-  border:1px solid var(--paper);color:var(--paper);
-  background:transparent;padding:.7rem 1.75rem;
-  border-radius:1px;cursor:pointer;
-}
-.cam-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.cam-error{font-family:var(--mono);font-size:.72rem;color:#e0a0a0;max-width:400px;text-align:center}
-
-/* FORM */
-.form-card{
+.verify-card{
   background:var(--warm);
   border:1px solid var(--rule);
-  border-radius:2px;padding:2.5rem;
+  border-radius:3px;padding:1.5rem 1.1rem;
 }
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.field{display:flex;flex-direction:column;gap:.4rem}
+
+/* VIEW 1 — choice: three big stacked buttons, photo first and most prominent */
+.choice-view{display:flex;flex-direction:column;gap:.85rem}
+.choice-btn{
+  font-family:var(--mono);
+  letter-spacing:.05em;
+  border-radius:2px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  transition:all .15s;width:100%;
+  text-align:center;
+}
+.choice-btn .emoji{font-size:1.2em;line-height:1}
+.choice-btn.primary{
+  font-size:1.05rem;font-weight:500;text-transform:none;
+  background:var(--ink);color:var(--paper);
+  border:none;padding:1.15rem 1rem;
+}
+.choice-btn.primary:hover{background:var(--gold)}
+.choice-btn.secondary{
+  font-size:.85rem;text-transform:none;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--rule);padding:.85rem 1rem;
+}
+.choice-btn.secondary:hover{border-color:var(--gold);color:var(--gold)}
+.choice-btn.tertiary{
+  font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;
+  background:none;color:var(--muted);
+  border:none;padding:.6rem 1rem;
+  text-decoration:underline;text-underline-offset:3px;
+}
+.choice-btn.tertiary:hover{color:var(--ink)}
+
+/* VIEW 2 — details: photo preview (if any) + minimal fields + big search CTA */
+.details-view{display:none;flex-direction:column;gap:1rem}
+.details-view.active{display:flex}
+.back-link{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;
+  color:var(--muted);background:none;border:none;cursor:pointer;
+  text-align:left;padding:0;align-self:flex-start;
+}
+.back-link:hover{color:var(--ink)}
+.photo-preview-wrap{display:none;text-align:center}
+.photo-preview-wrap.show{display:block}
+.photo-preview-wrap img{
+  max-width:100%;max-height:220px;border-radius:2px;
+  border:1px solid var(--rule);object-fit:contain;background:#000;
+}
+.identify-status{
+  font-family:var(--mono);font-size:.7rem;color:var(--gold);
+  font-style:italic;text-align:center;
+}
+.field{display:flex;flex-direction:column;gap:.35rem}
 label{
   font-family:var(--mono);font-size:.62rem;
   letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);
 }
 input{
-  font-family:var(--body);font-size:.95rem;font-weight:300;
+  font-family:var(--body);font-size:1rem;font-weight:300;
   background:var(--paper);
   border:1px solid var(--rule);
-  border-radius:1px;padding:.65rem .85rem;
+  border-radius:1px;padding:.75rem .85rem;
   color:var(--ink);outline:none;
   transition:border-color .15s;width:100%;
 }
 input::placeholder{color:var(--faint)}
 input:focus{border-color:var(--gold)}
+.fields-required{display:flex;flex-direction:column;gap:.75rem}
+.more-details{margin-top:-.25rem}
+.more-details summary{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;padding:.4rem 0;list-style:none;
+}
+.more-details summary::-webkit-details-marker{display:none}
+.more-details summary::before{content:'+ ';color:var(--gold)}
+.more-details[open] summary::before{content:'− '}
+.more-details-body{display:flex;flex-direction:column;gap:.75rem;padding-top:.6rem}
 
-.form-footer{display:flex;align-items:center;gap:1.5rem;margin-top:1.5rem}
-.verify-btn{
-  font-family:var(--mono);font-size:.72rem;
-  letter-spacing:.08em;text-transform:uppercase;
+.search-btn{
+  font-family:var(--mono);font-size:.8rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;
   background:var(--ink);color:var(--paper);
-  border:none;padding:.8rem 2rem;border-radius:1px;
-  cursor:pointer;transition:all .2s;
+  border:none;padding:1.05rem 1rem;border-radius:2px;
+  cursor:pointer;transition:all .2s;width:100%;
 }
-.verify-btn:hover:not(:disabled){background:var(--gold);transform:translateY(-1px)}
-.verify-btn:disabled{background:var(--faint);cursor:not-allowed;transform:none}
-.status-txt{
-  font-family:var(--mono);font-size:.68rem;
-  color:var(--muted);font-style:italic;
-}
+.search-btn:hover:not(:disabled){background:var(--gold)}
+.search-btn:disabled{background:var(--faint);cursor:not-allowed}
 .error-msg{
-  margin-top:.75rem;padding:.75rem 1rem;
+  margin-top:.25rem;padding:.75rem 1rem;
   background:#7a1e1e0d;border:1px solid #7a1e1e30;
-  border-radius:1px;font-size:.85rem;
+  border-radius:1px;font-size:.82rem;
   color:var(--red);font-style:italic;display:none;
 }
 
-/* ── LOADING ── */
+/* ── LOADING — honest, simple: spinner + a single clear line ── */
 .loading-box{
-  display:none;margin-top:2rem;
-  padding:2rem;background:var(--paper);
-  border:1px solid var(--rule);border-radius:2px;
+  display:none;margin-top:1.5rem;
+  padding:2.25rem 1.25rem;background:var(--paper);
+  border:1px solid var(--rule);border-radius:3px;
+  text-align:center;
 }
+.spinner{
+  width:34px;height:34px;margin:0 auto 1.1rem;
+  border:3px solid var(--rule);border-top-color:var(--gold);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 .loading-title{
-  font-family:var(--mono);font-size:.65rem;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:1.25rem;
+  font-family:var(--display);font-size:1.05rem;font-weight:400;
+  color:var(--ink);margin-bottom:.5rem;
 }
-.loading-steps{display:flex;flex-direction:column;gap:.75rem}
-.lstep{
-  display:flex;align-items:center;gap:.85rem;
-  font-family:var(--mono);font-size:.72rem;
-  color:var(--faint);transition:color .3s;
+.loading-sub{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.04em;
+  color:var(--muted);
 }
-.lstep.active{color:var(--ink)}
-.lstep.done{color:var(--green)}
-.lstep-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:currentColor;flex-shrink:0;
-}
-.lstep.active .lstep-dot{animation:blink .9s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.lstep-source{
-  margin-left:auto;font-size:.6rem;
-  color:var(--gold);opacity:0;transition:opacity .3s;
-}
-.lstep.done .lstep-source{opacity:1}
 
-/* ── PASSPORT ── */
-#results{margin-top:2.5rem;display:none}
+/* ── RESULTS (mobile-first passport) ── */
+#results{margin-top:1.75rem;display:none}
+.passport{border:1px solid var(--rule);border-radius:3px;overflow:hidden}
 
-.passport{
-  border:1px solid var(--rule);
-  border-radius:2px;overflow:hidden;
+/* Big glanceable status header — the first thing seen after a search */
+.result-head{padding:1.5rem 1.1rem;text-align:center;color:var(--paper)}
+.result-head.status-green{background:var(--green)}
+.result-head.status-amber{background:var(--amber)}
+.result-head.status-red{background:var(--red)}
+.result-score{
+  font-family:var(--display);font-size:3rem;font-weight:400;line-height:1;
 }
-.passport-head{
-  background:var(--ink2);color:var(--paper);
-  padding:1.5rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:.75rem;
+.result-score span{font-size:1.2rem;opacity:.8}
+.result-score-lbl{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  opacity:.75;margin-top:.15rem;
 }
-.passport-head h3{
-  font-family:var(--display);
-  font-size:1.15rem;font-weight:400;
-  font-style:italic;
+.result-status{
+  font-family:var(--display);font-size:1.15rem;font-style:italic;
+  margin-top:.85rem;line-height:1.3;
 }
-.passport-meta{
-  display:flex;align-items:center;gap:1rem;
+.result-artwork{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.03em;
+  opacity:.85;margin-top:.6rem;
 }
-.live-badge{
-  font-family:var(--mono);font-size:.58rem;
-  letter-spacing:.08em;text-transform:uppercase;
-  background:#1a4d35;color:#7de0b5;
-  padding:.2rem .65rem;border-radius:1px;
-}
-.issued-txt{font-family:var(--mono);font-size:.62rem;color:#b8b2aa}
 
-/* SCORE BAR */
-.score-bar{
-  padding:1.5rem 2rem;background:var(--warm);
-  border-bottom:1px solid var(--rule);
-  display:flex;align-items:center;gap:2rem;
+/* Field Mode: compact status line + single action CTA + share, under the score header */
+.fm-statusline{
+  padding:.85rem 1.1rem;text-align:center;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;
+  color:var(--muted);border-bottom:1px solid var(--rule);background:var(--warm);
 }
-.score-num{
-  font-family:var(--display);
-  font-size:3.2rem;font-weight:400;line-height:1;
-  min-width:100px;
+.fm-actions{padding:1.1rem;border-bottom:1px solid var(--rule)}
+.fm-action-btn{
+  width:100%;font-family:var(--mono);font-size:.85rem;font-weight:500;
+  letter-spacing:.04em;
+  border:none;border-radius:2px;padding:1rem;cursor:default;color:var(--paper);
 }
-.score-low{color:var(--red)}
-.score-mid{color:var(--amber)}
-.score-high{color:var(--green)}
-.score-info{flex:1}
-.score-lbl{
-  font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.3rem;
+.fm-action-btn.status-green{background:var(--green)}
+.fm-action-btn.status-amber{background:var(--amber)}
+.fm-action-btn.status-red{background:var(--red)}
+.fm-share{
+  margin-top:.85rem;width:100%;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--paper);color:var(--ink);border:1px solid var(--rule);
+  padding:.75rem;border-radius:2px;cursor:pointer;
 }
-.score-rat{font-size:.85rem;color:var(--muted);font-style:italic;line-height:1.5}
-.score-track{height:2px;background:var(--rule);border-radius:1px;margin-top:.75rem;overflow:hidden}
-.score-fill{height:100%;border-radius:1px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.fm-share:hover{border-color:var(--gold);color:var(--gold)}
 
-/* PASSPORT BODY */
-.passport-body{padding:2rem;display:flex;flex-direction:column;gap:2rem}
+.result-rationale{
+  padding:1rem 1.1rem;font-size:.8rem;color:var(--muted);
+  font-style:italic;line-height:1.6;border-bottom:1px solid var(--rule);
+  background:var(--warm);
+}
+
+.passport-body{padding:1.25rem 1.1rem;display:flex;flex-direction:column;gap:1.25rem}
 .p-section-title{
   font-family:var(--mono);font-size:.6rem;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.85rem;
-  padding-bottom:.4rem;border-bottom:1px solid var(--rule);
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.7rem;
+  padding-bottom:.35rem;border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
 }
 
-/* TIMELINE */
+/* Timeline — collapsed by default on the summary, tap to expand via <details> */
+.tl-details summary{cursor:pointer;list-style:none}
+.tl-details summary::-webkit-details-marker{display:none}
+.tl-summary-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:.35rem;border-bottom:1px solid var(--rule);margin-bottom:.7rem;
+}
+.tl-summary-row .p-section-title{border:none;padding:0;margin:0}
+.tl-toggle-hint{font-family:var(--mono);font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:.05em}
 .tl-entry{
-  display:grid;grid-template-columns:160px 1fr;
-  gap:1rem;padding:.75rem 0;
+  display:grid;grid-template-columns:96px 1fr;
+  gap:.75rem;padding:.65rem 0;
   border-bottom:1px solid var(--rule);
 }
 .tl-entry:last-child{border-bottom:none}
-.tl-yr{
-  font-family:var(--mono);font-size:.7rem;
-  color:var(--muted);padding-top:.1rem;
-  line-height:1.4;
-}
-.tl-name{font-size:.95rem;margin-bottom:.2rem}
+.tl-yr{font-family:var(--mono);font-size:.66rem;color:var(--muted);padding-top:.1rem;line-height:1.4}
+.tl-name{font-size:.9rem;margin-bottom:.2rem}
 .tl-name.gap{color:var(--red);font-style:italic}
-.tl-note{font-size:.8rem;color:var(--muted);font-style:italic;margin-bottom:.2rem;line-height:1.5}
-.tl-src{font-family:var(--mono);font-size:.6rem;color:var(--gold)}
+.tl-note{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:.2rem;line-height:1.5}
+.tl-src{font-family:var(--mono);font-size:.58rem;color:var(--gold)}
 .tl-src a{color:var(--gold);text-decoration:none}
 .tl-src a:hover{text-decoration:underline}
-.gap-tag{
-  display:inline-block;
-  background:#7a1e1e15;color:var(--red);
-  border:1px solid #7a1e1e35;
-  font-family:var(--mono);font-size:.57rem;
-  padding:.08rem .45rem;border-radius:1px;
-  text-transform:uppercase;margin-left:.5rem;
-  vertical-align:middle;letter-spacing:.04em;
+.gap-tag,.gk-tag{
+  display:inline-block;font-family:var(--mono);font-size:.55rem;
+  padding:.08rem .4rem;border-radius:1px;
+  text-transform:uppercase;margin-left:.4rem;
+  vertical-align:middle;letter-spacing:.03em;
 }
-.gk-tag{
-  display:inline-block;
-  background:#6b411815;color:var(--amber);
-  border:1px solid #6b411835;
-  font-family:var(--mono);font-size:.57rem;
-  padding:.08rem .45rem;border-radius:1px;
-  text-transform:uppercase;margin-left:.5rem;
-  vertical-align:middle;letter-spacing:.04em;
-}
+.gap-tag{background:#7a1e1e15;color:var(--red);border:1px solid #7a1e1e35}
+.gk-tag{background:#6b411815;color:var(--amber);border:1px solid #6b411835}
 
-/* FLAGS */
-.flags{display:flex;flex-direction:column;gap:.6rem}
+/* Flags — visible, but visually secondary (smaller than the status header/timeline) */
+.flags{display:flex;flex-direction:column;gap:.5rem}
 .flag{
-  padding:.75rem 1rem;border-radius:1px;
+  padding:.6rem .8rem;border-radius:1px;
   border-left:2px solid;
-  display:flex;gap:.85rem;align-items:flex-start;
+  display:flex;gap:.65rem;align-items:flex-start;
+  font-size:.78rem;
 }
 .flag.high{background:#7a1e1e08;border-color:var(--red)}
 .flag.medium{background:#6b411808;border-color:var(--amber)}
 .flag.low{background:#1a4d3508;border-color:var(--green)}
 .fsev{
-  font-family:var(--mono);font-size:.57rem;
+  font-family:var(--mono);font-size:.54rem;
   text-transform:uppercase;letter-spacing:.05em;
-  padding:.12rem .45rem;border-radius:1px;
+  padding:.1rem .4rem;border-radius:1px;
   white-space:nowrap;margin-top:.1rem;flex-shrink:0;
 }
 .flag.high .fsev{background:var(--red);color:var(--paper)}
 .flag.medium .fsev{background:var(--amber);color:var(--paper)}
 .flag.low .fsev{background:var(--green);color:var(--paper)}
-.ftext{font-size:.82rem;color:var(--muted);flex:1;line-height:1.5}
+.ftext{font-size:.78rem;color:var(--muted);flex:1;line-height:1.5}
 .ftext strong{color:var(--ink);font-weight:500}
-.ftext a{color:var(--gold);font-size:.72rem}
+.ftext a{color:var(--gold);font-size:.7rem}
+.no-flags{font-size:.8rem;color:var(--muted);font-style:italic}
 
-/* VALUATION */
-.val-grid{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:.6rem}
+/* Technical details — everything else, tucked away by default */
+.tech-details summary{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;padding:.5rem 0;list-style:none;
+  border-top:1px solid var(--rule);
+}
+.tech-details summary::-webkit-details-marker{display:none}
+.tech-details summary::before{content:'▸ ';color:var(--gold)}
+.tech-details[open] summary::before{content:'▾ '}
+.tech-body{display:flex;flex-direction:column;gap:1.25rem;padding-top:1rem}
+
+.val-grid{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:.5rem}
 .val-item span{
-  font-family:var(--mono);font-size:.6rem;
+  font-family:var(--mono);font-size:.58rem;
   text-transform:uppercase;letter-spacing:.06em;
   display:block;margin-bottom:.2rem;color:var(--muted);
 }
-.val-item .vv{font-size:.9rem;color:var(--ink)}
-.val-note{font-size:.8rem;color:var(--muted);font-style:italic;line-height:1.5}
+.val-item .vv{font-size:.88rem;color:var(--ink)}
+.val-note{font-size:.78rem;color:var(--muted);font-style:italic;line-height:1.5}
 
-/* AUTHORITIES */
-.auths{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:.6rem}
-.auth-card{
-  padding:.7rem .9rem;border:1px solid var(--rule);
-  border-radius:1px;background:var(--warm);
-}
-.auth-name{font-size:.8rem;font-weight:400;margin-bottom:.15rem}
-.auth-domain{font-family:var(--mono);font-size:.6rem;color:var(--gold);margin-bottom:.25rem;word-break:break-word}
-.auth-status{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.05em}
-.auth-link{display:block;font-family:var(--mono);font-size:.58rem;color:var(--muted);margin-top:.25rem;text-decoration:none}
+.auths{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.auth-card{padding:.6rem .75rem;border:1px solid var(--rule);border-radius:1px;background:var(--warm)}
+.auth-name{font-size:.76rem;font-weight:400;margin-bottom:.1rem}
+.auth-domain{font-family:var(--mono);font-size:.56rem;color:var(--gold);margin-bottom:.2rem;word-break:break-word}
+.auth-status{font-family:var(--mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.05em}
+.auth-link{display:block;font-family:var(--mono);font-size:.55rem;color:var(--muted);margin-top:.2rem;text-decoration:none}
 .auth-link:hover{color:var(--gold)}
 .s-clear{color:var(--green)}.s-flagged{color:var(--red)}
 .s-partial_match{color:var(--amber)}.s-not_found{color:var(--faint)}
 
-/* PASSPORT FOOTER */
-.passport-foot{
-  padding:1.25rem 2rem;background:var(--warm);
-  border-top:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
-}
-.sig-block{font-family:var(--mono);font-size:.6rem;color:var(--muted);line-height:1.9}
+.sig-block{font-family:var(--mono);font-size:.58rem;color:var(--muted);line-height:1.9;word-break:break-word}
 .sig-block strong{color:var(--ink)}
 
-/* RAW JSON */
-.raw-block{
-  margin-top:1.5rem;background:var(--ink2);
-  border-radius:2px;overflow:hidden;
-}
-.raw-head{
-  padding:.6rem 1rem;display:flex;
-  align-items:center;justify-content:space-between;
-  border-bottom:1px solid #ffffff12;
-}
-.raw-head span{font-family:var(--mono);font-size:.6rem;color:#b8b2aa;letter-spacing:.08em;text-transform:uppercase}
+.raw-block{background:var(--ink2);border-radius:2px;overflow:hidden}
+.raw-head{padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+.raw-head span{font-family:var(--mono);font-size:.58rem;color:#b8b2aa;letter-spacing:.06em;text-transform:uppercase}
 .raw-copy{
-  font-family:var(--mono);font-size:.62rem;
+  font-family:var(--mono);font-size:.6rem;
   background:transparent;border:1px solid #ffffff20;
-  color:#b8b2aa;padding:.22rem .7rem;border-radius:1px;cursor:pointer;
+  color:#b8b2aa;padding:.2rem .65rem;border-radius:1px;cursor:pointer;
 }
 .raw-copy:hover{border-color:var(--gold2);color:var(--gold2)}
 .raw-block pre{
-  padding:1.25rem;font-family:var(--mono);
-  font-size:.68rem;color:#c9a96e;
-  line-height:1.8;overflow-x:auto;
+  padding:1rem;font-family:var(--mono);
+  font-size:.64rem;color:#c9a96e;
+  line-height:1.75;overflow-x:auto;
   white-space:pre-wrap;word-break:break-word;
+  max-height:280px;overflow-y:auto;
 }
 
-/* ── ABOUT ── */
-.about{
-  padding:6rem 3rem;border-top:1px solid var(--rule);
-  background:var(--warm);
-}
+/* ── ABOUT (mobile-first: single column) ── */
+.about{padding:3rem 1.25rem;border-top:1px solid var(--rule);background:var(--warm)}
 .about-inner{max-width:900px;margin:0 auto}
-.about-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:3rem}
-.about-card h4{
-  font-family:var(--display);font-size:1.15rem;
-  font-weight:400;margin-bottom:.75rem;
-}
+.about-grid{display:grid;grid-template-columns:1fr;gap:1.75rem;margin-top:1.75rem}
+.about-card h4{font-family:var(--display);font-size:1.05rem;font-weight:400;margin-bottom:.6rem}
 .about-card h4 em{font-style:italic;color:var(--gold)}
-.about-card p{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.7}
+.about-card p{font-size:.84rem;color:var(--muted);font-weight:300;line-height:1.65}
 .about-card .tag{
-  font-family:var(--mono);font-size:.6rem;
+  font-family:var(--mono);font-size:.58rem;
   letter-spacing:.08em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.6rem;display:block;
+  color:var(--gold);margin-bottom:.5rem;display:block;
 }
 
 /* ── FOOTER ── */
 footer{
-  padding:3rem;border-top:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
+  padding:1.75rem 1.25rem;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:.75rem;
+  align-items:flex-start;
 }
-.foot-logo{
-  font-family:var(--display);font-size:.95rem;
-  font-weight:400;color:var(--muted);
-}
+.foot-logo{font-family:var(--display);font-size:.9rem;font-weight:400;color:var(--muted)}
 .foot-logo span{color:var(--gold);font-style:italic}
-.foot-note{font-family:var(--mono);font-size:.6rem;color:var(--faint);letter-spacing:.04em}
+.foot-note{font-family:var(--mono);font-size:.58rem;color:var(--faint);letter-spacing:.03em}
 
 /* ── ANIMATIONS ── */
-.fade-up{
-  opacity:0;transform:translateY(24px);
-  transition:opacity .7s ease,transform .7s ease;
-}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .fade-up.visible{opacity:1;transform:none}
 
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .hero{padding:7rem 1.5rem 4rem}
-  .hero-stats{position:static;margin-top:3rem;justify-content:flex-start}
-  .how,.verify-section,.about{padding:4rem 1.5rem}
+/* ══════════════════════════════════════════════════════════════════════
+   PROGRESSIVE ENHANCEMENT — tablet and up. Base (mobile) rules above are
+   never overridden downward from here; these only ADD room/columns back
+   for larger viewports.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:640px){
   .steps{grid-template-columns:1fr 1fr;gap:2rem}
-  .steps::before{display:none}
-  .form-row{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
-  .tl-entry{grid-template-columns:120px 1fr}
-  footer{padding:2rem 1.5rem}
+  .about-grid{grid-template-columns:1fr 1fr}
+  .auths{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+
+@media(min-width:768px){
+  nav{padding:1.25rem 3rem}
+  .nav-links a:not(.nav-cta){display:inline}
+  .nav-cta{font-size:.7rem;padding:.45rem 1.1rem}
+
+  .hero{min-height:100vh;padding:8rem 3rem 4rem;overflow:hidden}
+  .hero-eyebrow{font-size:.68rem;margin-bottom:1.75rem}
+  .hero-eyebrow::before{width:32px}
+  .hero-h1{font-size:clamp(3rem,7vw,6rem);margin-bottom:2rem}
+  .hero-sub{font-size:1.1rem;margin-bottom:3rem}
+  .hero-actions{gap:1.5rem}
+  .btn-primary{font-size:.75rem;padding:.85rem 2.25rem}
+  .hero-stats{display:flex;position:absolute;bottom:3rem;right:3rem;gap:3rem;z-index:1}
+  .stat{text-align:right}
+  .stat-num{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--ink);line-height:1}
+  .stat-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+
+  .how,.verify-section,.about{padding:6rem 3rem}
+  .section-label{margin-bottom:3rem}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .steps::before{content:'';position:absolute;top:22px;left:8%;right:8%;height:1px;background:var(--rule);z-index:0}
+  .step{align-items:center;text-align:center;padding:0 1rem}
+  .step-num{position:static;width:56px;height:56px;margin-bottom:1rem}
+
+  .verify-header h2{font-size:2.5rem}
+  .verify-header p{font-size:.95rem}
+  .verify-card{padding:2.5rem}
+  .choice-view{max-width:420px;margin:0 auto}
+
+  .result-head{padding:2rem}
+  .result-score{font-size:3.6rem}
+  .passport-body{padding:2rem}
+
+  .about-grid{grid-template-columns:1fr 1fr 1fr;gap:3rem}
+
+  footer{padding:3rem;flex-direction:row;align-items:center;justify-content:space-between}
+}
+
+/* Field Mode share-to-PDF fallback: browser print/Save-as-PDF shows only the passport */
+@media print{
+  nav,.hero,.how,.about,footer,.verify-header,.verify-card,.loading-box{display:none!important}
+  .verify-section{padding:0}
+  #results{display:block!important;margin-top:0}
+  .fm-share{display:none!important}
 }
 </style>
 </head>
@@ -621,18 +630,9 @@ footer{
     </div>
   </div>
   <div class="hero-stats fade-up" style="transition-delay:.4s">
-    <div class="stat">
-      <div class="stat-num">7</div>
-      <div class="stat-label">Free public sources</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Paid APIs required</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Ways to search</div>
-    </div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Sources checked</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Sign-up required</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Ways to search</div></div>
   </div>
 </section>
 
@@ -643,8 +643,8 @@ footer{
     <div class="step fade-up">
       <div class="step-num">01</div>
       <div class="step-title">Identify</div>
-      <p class="step-desc">Type what you know, upload a photo, or use the camera on-site. Gemini Vision reads the image and fills in the form.</p>
-      <span class="step-tag">Gemini free tier</span>
+      <p class="step-desc">Take a photo, upload one, or type what you know. Gemini Vision reads the image and fills in the details.</p>
+      <span class="step-tag">Gemini Vision</span>
     </div>
     <div class="step fade-up" style="transition-delay:.08s">
       <div class="step-num">02</div>
@@ -672,93 +672,79 @@ footer{
   <div class="verify-inner">
     <div class="verify-header fade-up">
       <h2>Verify <em>provenance</em><br>of any artwork.</h2>
-      <p>Type what you know, or point a camera at the piece. The agent finds the rest — and flags what cannot be verified.</p>
+      <p>Point your camera at the piece — or upload a photo, or describe it — and the agent finds the rest.</p>
+      <div class="mode-toggle" id="modeToggle">
+        <button type="button" class="mode-btn" data-mode="field" onclick="setViewMode('field')">Field Mode</button>
+        <button type="button" class="mode-btn" data-mode="full" onclick="setViewMode('full')">Full Report</button>
+      </div>
     </div>
 
-    <div class="form-card fade-up">
-      <div class="image-input-row">
-        <button type="button" class="img-btn" onclick="document.getElementById('fileInput').click()">
-          &#128194; Upload image
+    <div class="verify-card fade-up">
+      <!-- VIEW 1: choice (default) -->
+      <div class="choice-view" id="choiceView">
+        <button type="button" class="choice-btn primary" onclick="triggerCapture()">
+          <span class="emoji">📷</span> Take Photo
         </button>
-        <button type="button" class="img-btn" onclick="openCamera()">
-          &#128247; Use camera
+        <button type="button" class="choice-btn secondary" onclick="triggerUpload()">
+          <span class="emoji">📁</span> Upload Image
         </button>
-        <span class="img-divider">optional — auto-fills the form below</span>
-        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="onFileChosen(this.files[0])"/>
+        <button type="button" class="choice-btn tertiary" onclick="showManualForm()">
+          ✏️ Describe manually
+        </button>
+        <input type="file" id="captureInput" accept="image/*" capture="environment" style="display:none" onchange="onFileChosen(this.files[0])"/>
+        <input type="file" id="uploadInput" accept="image/*" style="display:none" onchange="onFileChosen(this.files[0])"/>
       </div>
 
-      <div class="img-preview" id="imgPreview">
-        <img id="imgPreviewThumb" src="" alt="Selected artwork"/>
-        <span id="imgPreviewName"></span>
-        <button type="button" onclick="clearImage()">remove</button>
-      </div>
-      <div class="identify-status" id="identifyStatus">Identifying image with Gemini Vision…</div>
+      <!-- VIEW 2: details (photo preview if any, + minimal fields, + search) -->
+      <div class="details-view" id="detailsView">
+        <button type="button" class="back-link" onclick="backToChoice()">← Start over</button>
 
-      <div class="form-row">
-        <div class="field">
-          <label>Artwork title *</label>
-          <input type="text" id="f-title" placeholder="e.g. Salvator Mundi"/>
+        <div class="photo-preview-wrap" id="photoPreviewWrap">
+          <img id="photoPreviewImg" alt="Selected artwork"/>
         </div>
-        <div class="field">
-          <label>Artist *</label>
-          <input type="text" id="f-artist" placeholder="e.g. Leonardo da Vinci"/>
+        <div class="identify-status" id="identifyStatus" style="display:none"></div>
+
+        <div class="fields-required">
+          <div class="field">
+            <label>Artwork title *</label>
+            <input type="text" id="d-title" placeholder="e.g. Salvator Mundi" oninput="updateSearchBtnState()"/>
+          </div>
+          <div class="field">
+            <label>Artist *</label>
+            <input type="text" id="d-artist" placeholder="e.g. Leonardo da Vinci" oninput="updateSearchBtnState()"/>
+          </div>
         </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Period / date</label>
-          <input type="text" id="f-period" placeholder="e.g. c. 1500, Roman period"/>
-        </div>
-        <div class="field">
-          <label>Medium</label>
-          <input type="text" id="f-medium" placeholder="e.g. oil on walnut panel"/>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Last known sale price (USD, optional)</label>
-          <input type="text" id="f-price" placeholder="e.g. 450,312,500"/>
-        </div>
-        <div></div>
+
+        <details class="more-details">
+          <summary>More details (optional)</summary>
+          <div class="more-details-body">
+            <div class="field">
+              <label>Period / date</label>
+              <input type="text" id="d-period" placeholder="e.g. c. 1500, Roman period"/>
+            </div>
+            <div class="field">
+              <label>Medium</label>
+              <input type="text" id="d-medium" placeholder="e.g. oil on walnut panel"/>
+            </div>
+            <div class="field">
+              <label>Last known sale price (USD)</label>
+              <input type="text" id="d-price" placeholder="e.g. 450,312,500"/>
+            </div>
+          </div>
+        </details>
+
+        <button class="search-btn" id="searchBtn" onclick="runVerify()" disabled>Search Provenance</button>
+        <span class="status-txt" id="statusTxt" style="display:none"></span>
       </div>
 
-      <div class="form-footer">
-        <button class="verify-btn" id="vBtn" onclick="runVerify()">Verify provenance</button>
-        <span class="status-txt" id="statusTxt"></span>
-      </div>
       <div class="error-msg" id="errMsg"></div>
     </div>
 
     <!-- LOADING -->
     <div class="loading-box" id="loadingBox">
-      <div class="loading-title">Agent running</div>
-      <div class="loading-steps">
-        <div class="lstep" id="ls1">
-          <div class="lstep-dot"></div>
-          Researching provenance and looting alerts
-          <span class="lstep-source">tavily · interpol · art loss register · lost art</span>
-        </div>
-        <div class="lstep" id="ls2">
-          <div class="lstep-dot"></div>
-          Querying museum collections
-          <span class="lstep-source">the met · art institute of chicago · moma</span>
-        </div>
-        <div class="lstep" id="ls3">
-          <div class="lstep-dot"></div>
-          Checking cultural archives, encyclopedic and structured records
-          <span class="lstep-source">europeana · wikipedia · wikidata</span>
-        </div>
-        <div class="lstep" id="ls4">
-          <div class="lstep-dot"></div>
-          Synthesizing the provenance timeline
-          <span class="lstep-source">gemini</span>
-        </div>
-        <div class="lstep" id="ls5">
-          <div class="lstep-dot"></div>
-          Scoring confidence and signing the passport
-          <span class="lstep-source">deterministic algorithm</span>
-        </div>
-      </div>
+      <div class="spinner"></div>
+      <div class="loading-title">Searching 7 sources…</div>
+      <div class="loading-sub">Tavily · The Met · Art Institute of Chicago · MoMA · Europeana · Wikipedia · Wikidata</div>
     </div>
 
     <!-- RESULTS -->
@@ -766,16 +752,7 @@ footer{
   </div>
 </section>
 
-<!-- CAMERA MODAL -->
-<div class="camera-modal" id="cameraModal">
-  <video id="cameraVideo" autoplay playsinline muted></video>
-  <div class="cam-error" id="camError" style="display:none"></div>
-  <div class="cam-actions">
-    <button type="button" class="cam-btn" onclick="closeCamera()">Cancel</button>
-    <button type="button" class="cam-btn primary" id="camCaptureBtn" onclick="capturePhoto()">Capture</button>
-  </div>
-</div>
-<canvas id="cameraCanvas" style="display:none"></canvas>
+<canvas id="resizeCanvas" style="display:none"></canvas>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -819,130 +796,143 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.12});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 
-// ── STEP ANIMATION ──
-function setStep(n){
-  for(let i=1;i<=5;i++){
-    const el=document.getElementById('ls'+i);
-    el.classList.remove('active','done');
-    if(i<n)el.classList.add('done');
-    if(i===n)el.classList.add('active');
-  }
+// ── VIEW MODE (Field Mode / Full Report), persisted in localStorage ──
+const VIEW_MODE_KEY='aa_view_mode';
+function getViewMode(){
+  try{return localStorage.getItem(VIEW_MODE_KEY)||'field'}catch(e){return 'field'}
+}
+function setViewMode(mode){
+  try{localStorage.setItem(VIEW_MODE_KEY,mode)}catch(e){}
+  updateModeToggleUI();
+  if(window.__lastPassport)renderResult(window.__lastPassport);
+}
+function updateModeToggleUI(){
+  const mode=getViewMode();
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+}
+updateModeToggleUI();
+
+// ── VIEW SWITCHING ──
+function showChoiceView(){
+  document.getElementById('choiceView').style.display='flex';
+  document.getElementById('detailsView').classList.remove('active');
+}
+function showDetailsView(){
+  document.getElementById('choiceView').style.display='none';
+  document.getElementById('detailsView').classList.add('active');
+}
+function backToChoice(){
+  hideErr();
+  document.getElementById('captureInput').value='';
+  document.getElementById('uploadInput').value='';
+  document.getElementById('photoPreviewWrap').classList.remove('show');
+  document.getElementById('identifyStatus').style.display='none';
+  document.getElementById('d-title').value='';
+  document.getElementById('d-artist').value='';
+  document.getElementById('d-period').value='';
+  document.getElementById('d-medium').value='';
+  document.getElementById('d-price').value='';
+  updateSearchBtnState();
+  document.getElementById('results').style.display='none';
+  showChoiceView();
+}
+function showManualForm(){
+  document.getElementById('photoPreviewWrap').classList.remove('show');
+  document.getElementById('identifyStatus').style.display='none';
+  showDetailsView();
+  document.getElementById('d-title').focus();
+}
+function updateSearchBtnState(){
+  const title=document.getElementById('d-title').value.trim();
+  const artist=document.getElementById('d-artist').value.trim();
+  document.getElementById('searchBtn').disabled=!(title&&artist);
 }
 
-// ── IMAGE UPLOAD ──
-function onFileChosen(file){
+function triggerCapture(){ document.getElementById('captureInput').click(); }
+function triggerUpload(){ document.getElementById('uploadInput').click(); }
+
+// ── CLIENT-SIDE IMAGE RESIZE ──
+// Downscales to the same target the server uses (max 1500px side, JPEG q=0.85) BEFORE
+// upload, so a 12MP+ phone photo doesn't ship its full multi-MB original over what may be
+// museum wifi/cellular — this is most of what "seconds, not minutes" depends on.
+function resizeImageFile(file, maxDim, quality){
+  maxDim=maxDim||1500; quality=quality||0.85;
+  return new Promise(resolve=>{
+    const url=URL.createObjectURL(file);
+    const img=new Image();
+    img.onload=()=>{
+      let {width,height}=img;
+      if(width>maxDim||height>maxDim){
+        if(width>height){height=Math.round(height*maxDim/width);width=maxDim}
+        else{width=Math.round(width*maxDim/height);height=maxDim}
+      }
+      const canvas=document.getElementById('resizeCanvas');
+      canvas.width=width;canvas.height=height;
+      canvas.getContext('2d').drawImage(img,0,0,width,height);
+      canvas.toBlob(blob=>{
+        URL.revokeObjectURL(url);
+        if(!blob){resolve(file);return}
+        resolve(new File([blob], (file.name||'photo').replace(/\.[^.]+$/,'')+'.jpg', {type:'image/jpeg'}));
+      },'image/jpeg',quality);
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);resolve(file)};
+    img.src=url;
+  });
+}
+
+// ── IMAGE SELECTION (from either "Take Photo" or "Upload Image") ──
+async function onFileChosen(file){
   if(!file)return;
-  showImagePreview(file);
-  identifyImage(file);
-}
+  showDetailsView();
 
-function showImagePreview(file){
-  const url=URL.createObjectURL(file);
-  document.getElementById('imgPreviewThumb').src=url;
-  document.getElementById('imgPreviewName').textContent=file.name||'captured photo';
-  document.getElementById('imgPreview').style.display='flex';
-}
+  const previewWrap=document.getElementById('photoPreviewWrap');
+  const previewImg=document.getElementById('photoPreviewImg');
+  previewImg.src=URL.createObjectURL(file);
+  previewWrap.classList.add('show');
 
-function clearImage(){
-  document.getElementById('imgPreview').style.display='none';
-  document.getElementById('fileInput').value='';
-}
-
-async function identifyImage(file){
   const statusEl=document.getElementById('identifyStatus');
   statusEl.style.display='block';
+  statusEl.textContent='Identifying image with Gemini Vision…';
   hideErr();
+
   try{
+    const resized=await resizeImageFile(file);
     const fd=new FormData();
-    fd.append('image',file);
+    fd.append('image',resized);
     const res=await fetch('/api/identify',{method:'POST',body:fd});
     const data=await res.json();
     if(data.error)throw new Error(data.error);
-    if(data.title)document.getElementById('f-title').value=data.title;
-    if(data.artist)document.getElementById('f-artist').value=data.artist;
-    if(data.period)document.getElementById('f-period').value=data.period;
-    if(data.medium)document.getElementById('f-medium').value=data.medium;
-    statusEl.style.display='none';
+    if(data.title)document.getElementById('d-title').value=data.title;
+    if(data.artist)document.getElementById('d-artist').value=data.artist;
+    if(data.period)document.getElementById('d-period').value=data.period;
+    if(data.medium)document.getElementById('d-medium').value=data.medium;
+    updateSearchBtnState();
     if(data.title&&data.artist){
-      runVerify();
+      statusEl.textContent='Identified: '+data.title+' — '+data.artist+'. Tap Search Provenance, or edit first.';
     }else{
-      showErr('Could not fully identify the artwork. Please complete the fields manually.'+(data.notes?' ('+data.notes+')':''));
+      statusEl.textContent='Could not fully identify the artwork'+(data.notes?': '+data.notes:'')+'. Please complete the fields below.';
     }
   }catch(err){
-    statusEl.style.display='none';
-    showErr('Identification failed: '+err.message);
+    statusEl.textContent='Identification failed: '+err.message+'. You can still fill in the fields manually.';
   }
-}
-
-// ── CAMERA ──
-let cameraStream=null;
-
-async function openCamera(){
-  const modal=document.getElementById('cameraModal');
-  const video=document.getElementById('cameraVideo');
-  const errEl=document.getElementById('camError');
-  errEl.style.display='none';
-  modal.style.display='flex';
-  try{
-    cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
-    video.srcObject=cameraStream;
-  }catch(err){
-    errEl.textContent='Could not access the camera: '+err.message+'. You can use "Upload image" instead.';
-    errEl.style.display='block';
-  }
-}
-
-function closeCamera(){
-  const modal=document.getElementById('cameraModal');
-  modal.style.display='none';
-  if(cameraStream){
-    cameraStream.getTracks().forEach(t=>t.stop());
-    cameraStream=null;
-  }
-}
-
-function capturePhoto(){
-  const video=document.getElementById('cameraVideo');
-  if(!video.videoWidth){return}
-  const canvas=document.getElementById('cameraCanvas');
-  canvas.width=video.videoWidth;
-  canvas.height=video.videoHeight;
-  const ctx=canvas.getContext('2d');
-  ctx.drawImage(video,0,0,canvas.width,canvas.height);
-  canvas.toBlob(blob=>{
-    if(!blob)return;
-    const file=new File([blob],'camera-capture.jpg',{type:'image/jpeg'});
-    closeCamera();
-    showImagePreview(file);
-    identifyImage(file);
-  },'image/jpeg',0.9);
 }
 
 // ── VERIFY ──
 async function runVerify(){
-  const title=document.getElementById('f-title').value.trim();
-  const artist=document.getElementById('f-artist').value.trim();
+  const title=document.getElementById('d-title').value.trim();
+  const artist=document.getElementById('d-artist').value.trim();
   if(!title||!artist){showErr('Please enter at least an artwork title and artist.');return}
 
   hideErr();
-  document.getElementById('vBtn').disabled=true;
+  document.getElementById('searchBtn').disabled=true;
   document.getElementById('results').style.display='none';
   document.getElementById('results').innerHTML='';
   document.getElementById('loadingBox').style.display='block';
-  document.getElementById('statusTxt').textContent='Running provenance investigation...';
   document.getElementById('loadingBox').scrollIntoView({behavior:'smooth',block:'start'});
-  setStep(1);
 
-  const timers=[
-    setTimeout(()=>setStep(2),3000),
-    setTimeout(()=>setStep(3),7000),
-    setTimeout(()=>setStep(4),11000),
-    setTimeout(()=>setStep(5),15000)
-  ];
-
-  const period=document.getElementById('f-period').value.trim();
-  const medium=document.getElementById('f-medium').value.trim();
-  const price=document.getElementById('f-price').value.trim();
+  const period=document.getElementById('d-period').value.trim();
+  const medium=document.getElementById('d-medium').value.trim();
+  const price=document.getElementById('d-price').value.trim();
 
   try{
     const res=await fetch('/api/verify',{
@@ -950,18 +940,14 @@ async function runVerify(){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({title,artist,period,medium,price})
     });
-    timers.forEach(clearTimeout);
     const passport=await res.json();
     if(passport.error)throw new Error(passport.error);
     document.getElementById('loadingBox').style.display='none';
-    document.getElementById('vBtn').disabled=false;
-    document.getElementById('statusTxt').textContent='';
-    renderPassport(passport);
+    updateSearchBtnState();
+    renderResult(passport);
   }catch(err){
-    timers.forEach(clearTimeout);
     document.getElementById('loadingBox').style.display='none';
-    document.getElementById('vBtn').disabled=false;
-    document.getElementById('statusTxt').textContent='';
+    updateSearchBtnState();
     showErr('Investigation failed: '+err.message);
   }
 }
@@ -969,12 +955,109 @@ async function runVerify(){
 function showErr(m){const e=document.getElementById('errMsg');e.textContent=m;e.style.display='block'}
 function hideErr(){document.getElementById('errMsg').style.display='none'}
 
-function scoreClass(s){return s<.4?'score-low':s<.7?'score-mid':'score-high'}
-function scoreColor(s){return s<.4?'#7a1e1e':s<.7?'#6b4118':'#1a4d35'}
+// ── STATUS / SCORE ──
+function scoreStatus(d){
+  const flags=d.riskFlags||[];
+  const hasHigh=flags.some(f=>f.severity==='high');
+  const hasMedium=flags.some(f=>f.severity==='medium');
+  const sc=d.confidenceScore||0;
+  if(hasHigh)return{cls:'status-red',text:'⚠️ Watchlist match'};
+  if(hasMedium||sc<0.7)return{cls:'status-amber',text:'Caution — review needed'};
+  return{cls:'status-green',text:'No alerts found'};
+}
 
-function renderPassport(d){
+// ── FIELD MODE: score + one-line summary + a single colour-matched action CTA ──
+function fieldStatus(d){
+  const sc=d.confidenceScore||0;
+  const watchlistCount=(d.riskFlags||[]).filter(f=>/watchlist/i.test(f.type||'')).length;
+  const custodyGaps=(d.provenanceTimeline||[]).filter(e=>e.isGap).length;
+  const sourcesFound=(d.authoritiesConsulted||[]).filter(a=>a.response&&a.response!=='not_found').length;
+
+  let cls,emoji,action;
+  if(sc<0.4||watchlistCount>0){cls='status-red';emoji='🚨';action='Alert staff / Report';}
+  else if(sc<0.7){cls='status-amber';emoji='⚠️';action='Research further';}
+  else{cls='status-green';emoji='✅';action='Proceed with caution';}
+
+  const parts=[watchlistCount>0?`${watchlistCount} watchlist match${watchlistCount>1?'es':''}`:'No watchlist matches'];
+  parts.push(`${sourcesFound} source${sourcesFound!==1?'s':''} found`);
+  if(custodyGaps>0)parts.push(`${custodyGaps} custody gap${custodyGaps>1?'s':''}`);
+
+  return{cls,emoji,action,statusLine:parts.join(' · ')};
+}
+
+function renderFieldReport(d){
+  const sc=d.confidenceScore||0;
+  const fs=fieldStatus(d);
+
+  let tl='';
+  for(const e of(d.provenanceTimeline||[])){
+    tl+=`<div class="tl-entry">
+      <div class="tl-yr">${e.period||''}</div>
+      <div>
+        <div class="tl-name${e.isGap?' gap':''}">${e.owner||'Unknown'}${e.isGap?'<span class="gap-tag">custody gap</span>':''}</div>
+        ${e.gapNote?`<div class="tl-note">${e.gapNote}</div>`:''}
+        ${e.note?`<div class="tl-note">${e.note}</div>`:''}
+        ${e.sourceUrl?`<div class="tl-src">&#9632; <a href="${e.sourceUrl}" target="_blank">${e.sourceAuthority||e.sourceUrl}</a></div>`:e.sourceAuthority?`<div class="tl-src">&#9632; ${e.sourceAuthority}</div>`:''}
+      </div>
+    </div>`;
+  }
+  const tlCount=(d.provenanceTimeline||[]).length;
+
+  const html=`<div class="passport field-passport">
+    <div class="result-head ${fs.cls}">
+      <div class="result-score">${Math.round(sc*100)}<span>%</span></div>
+      <div class="result-score-lbl">Provenance confidence</div>
+      <div class="result-artwork">${d.artwork?.title||'Unknown'} — ${d.artwork?.artist||''}</div>
+    </div>
+    <div class="fm-statusline">${fs.statusLine}</div>
+    <div class="fm-actions">
+      <button type="button" class="fm-action-btn ${fs.cls}">${fs.emoji} ${fs.action}</button>
+    </div>
+    <div class="passport-body">
+      <details class="tl-details">
+        <summary>
+          <div class="tl-summary-row">
+            <div class="p-section-title" style="margin:0;padding:0;border:none">Provenance timeline (${tlCount})</div>
+            <span class="tl-toggle-hint">View full history</span>
+          </div>
+        </summary>
+        ${tl||'<div class="no-flags">No timeline entries found.</div>'}
+      </details>
+      <button type="button" class="fm-share" onclick="sharePassport()">🔗 Share passport</button>
+    </div>
+  </div>`;
+
+  const r=document.getElementById('results');
+  r.innerHTML=html;
+  r.style.display='block';
+  r.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+async function sharePassport(){
+  const d=window.__lastPassport;
+  if(!d)return;
+  const sc=Math.round((d.confidenceScore||0)*100);
+  const title=d.artwork?.title||'Artwork';
+  const artist=d.artwork?.artist||'';
+  const fs=fieldStatus(d);
+  const summary=`${title} — ${artist}\nProvenance confidence: ${sc}%\n${fs.statusLine}`;
+  if(navigator.share){
+    try{await navigator.share({title:'Provenance Passport: '+title,text:summary,url:location.href})}catch(e){/* user cancelled */}
+  }else{
+    window.print();
+  }
+}
+
+function renderResult(d){
+  window.__lastPassport=d;
+  if(getViewMode()==='field')renderFieldReport(d);
+  else renderFullReport(d);
+}
+
+function renderFullReport(d){
   const sc=d.confidenceScore||0;
   const now=d.passportSignature?.signedAt||new Date().toISOString();
+  const status=scoreStatus(d);
 
   // timeline
   let tl='';
@@ -989,6 +1072,7 @@ function renderPassport(d){
       </div>
     </div>`;
   }
+  const tlCount=(d.provenanceTimeline||[]).length;
 
   // flags
   let flags='';
@@ -998,7 +1082,7 @@ function renderPassport(d){
       <div class="ftext"><strong>${(f.type||'').replace(/_/g,' ')}</strong> — ${f.detail}${f.sourceUrl?` <a href="${f.sourceUrl}" target="_blank">[source]</a>`:''}</div>
     </div>`;
   }
-  if(!flags)flags='<div style="font-size:.85rem;color:var(--muted);font-style:italic">No risk flags identified.</div>';
+  if(!flags)flags='<div class="no-flags">No risk flags identified.</div>';
 
   // valuation
   let val='';
@@ -1027,62 +1111,56 @@ function renderPassport(d){
   }
 
   const html=`<div class="passport">
-    <div class="passport-head">
-      <h3>${d.artwork?.title||'Unknown'} — ${d.artwork?.artist||''}</h3>
-      <div class="passport-meta">
-        <span class="live-badge">&#9632; Live search</span>
-        <span class="issued-txt">${new Date(now).toDateString()}</span>
-      </div>
+    <div class="result-head ${status.cls}">
+      <div class="result-score">${Math.round(sc*100)}<span>%</span></div>
+      <div class="result-score-lbl">Provenance confidence</div>
+      <div class="result-status">${status.text}</div>
+      <div class="result-artwork">${d.artwork?.title||'Unknown'} — ${d.artwork?.artist||''}</div>
     </div>
-    <div class="score-bar">
-      <div class="score-num ${scoreClass(sc)}">${Math.round(sc*100)}<span style="font-size:1.3rem">%</span></div>
-      <div class="score-info">
-        <div class="score-lbl">Provenance confidence score</div>
-        <div class="score-rat">${d.confidenceRationale||''}</div>
-        <div class="score-track"><div class="score-fill" style="width:0%;background:${scoreColor(sc)}"></div></div>
-      </div>
-    </div>
+    ${d.confidenceRationale?`<div class="result-rationale">${d.confidenceRationale}</div>`:''}
     <div class="passport-body">
-      <div>
-        <div class="p-section-title">Provenance timeline</div>
-        ${tl||'<div style="font-size:.85rem;color:var(--muted);font-style:italic">No timeline entries found.</div>'}
-      </div>
+      <details class="tl-details" ${tlCount<=2?'open':''}>
+        <summary>
+          <div class="tl-summary-row">
+            <div class="p-section-title" style="margin:0;padding:0;border:none">Provenance timeline (${tlCount})</div>
+            <span class="tl-toggle-hint">tap to ${tlCount<=2?'collapse':'expand'}</span>
+          </div>
+        </summary>
+        ${tl||'<div class="no-flags">No timeline entries found.</div>'}
+      </details>
       <div>
         <div class="p-section-title">Risk flags</div>
         <div class="flags">${flags}</div>
       </div>
-      ${val}
-      <div>
-        <div class="p-section-title">Authorities consulted</div>
-        <div class="auths">${auths}</div>
-      </div>
+      <details class="tech-details">
+        <summary>Full technical passport — authorities consulted, valuation, signature, raw JSON</summary>
+        <div class="tech-body">
+          ${val}
+          <div>
+            <div class="p-section-title">Authorities consulted</div>
+            <div class="auths">${auths}</div>
+          </div>
+          <div class="sig-block">
+            <strong>Signed by:</strong> ${d.passportSignature?.signedBy||''} &nbsp;·&nbsp; <strong>Date:</strong> ${new Date(now).toUTCString()}<br/>
+            <strong>Integrity hash:</strong> ${d.passportSignature?.integrityHash||''}<br/>
+            <strong>Attestation:</strong> ${d.passportSignature?.attestation||''}
+          </div>
+          <div class="raw-block">
+            <div class="raw-head">
+              <span>Raw JSON Passport</span>
+              <button class="raw-copy" id="rawCopyBtn" onclick="copyRaw()">Copy JSON</button>
+            </div>
+            <pre id="rawJson">${JSON.stringify(d,null,2)}</pre>
+          </div>
+        </div>
+      </details>
     </div>
-    <div class="passport-foot">
-      <div class="sig-block">
-        <strong>Signed by:</strong> ${d.passportSignature?.signedBy||''} &nbsp;·&nbsp; <strong>Date:</strong> ${new Date(now).toUTCString()}<br/>
-        <strong>Integrity hash:</strong> ${d.passportSignature?.integrityHash||''}<br/>
-        <strong>Attestation:</strong> ${d.passportSignature?.attestation||''}
-      </div>
-    </div>
-  </div>
-  <div class="raw-block">
-    <div class="raw-head">
-      <span>Raw JSON Passport</span>
-      <button class="raw-copy" id="rawCopyBtn" onclick="copyRaw()">Copy JSON</button>
-    </div>
-    <pre id="rawJson">${JSON.stringify(d,null,2)}</pre>
   </div>`;
 
   const r=document.getElementById('results');
   r.innerHTML=html;
   r.style.display='block';
   r.scrollIntoView({behavior:'smooth',block:'start'});
-
-  // animate score fill
-  setTimeout(()=>{
-    const fill=r.querySelector('.score-fill');
-    if(fill)fill.style.width=Math.round(sc*100)+'%';
-  },100);
 }
 
 function copyRaw(){
