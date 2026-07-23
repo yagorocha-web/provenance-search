@@ -490,6 +490,28 @@ app.post('/api/verify', rateLimiter, async (req, res) => {
 
   const query = [title, artist].filter(Boolean).join(' ');
 
+  // Stream per-source progress over SSE so a museum visitor on slow wifi sees which of the
+  // 7 sources has answered, instead of staring at one static spinner for 10-20s. Errors that
+  // happen before this point (validation, missing key) are still plain JSON below — only
+  // once we commit to the event-stream content type do failures become 'error' events.
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no'
+  });
+  const send = (obj) => res.write(`data: ${JSON.stringify(obj)}\n\n`);
+
+  const SOURCE_LABELS = {
+    tavily: 'Tavily', met: 'The Met Museum', aic: 'Art Institute of Chicago',
+    moma: 'MoMA', europeana: 'Europeana', wiki: 'Wikipedia', wikidata: 'Wikidata'
+  };
+  for (const label of Object.values(SOURCE_LABELS)) send({ type: 'progress', name: label, status: 'searching' });
+  const track = (key, promise) => promise.then(r => {
+    send({ type: 'progress', name: SOURCE_LABELS[key], status: 'done' });
+    return r;
+  });
+
   // Global 30s bound on the parallel search phase: if it runs long, abort every in-flight
   // fetch at once via the shared signal rather than letting the request hang indefinitely.
   // Individual source failures do NOT cancel their siblings — every searchX() already
@@ -501,15 +523,16 @@ app.post('/api/verify', rateLimiter, async (req, res) => {
 
   try {
     const [tavily, met, aic, europeana, wiki, moma, wikidata] = await Promise.all([
-      searchTavily(title, artist, signal),
-      searchMet(query, signal),
-      searchAIC(query, signal),
-      searchEuropeana(query, signal),
-      searchWikipedia(query, signal),
-      Promise.resolve(searchMoma(title, artist)),
-      searchWikidata(title, artist, signal)
+      track('tavily', searchTavily(title, artist, signal)),
+      track('met', searchMet(query, signal)),
+      track('aic', searchAIC(query, signal)),
+      track('europeana', searchEuropeana(query, signal)),
+      track('wiki', searchWikipedia(query, signal)),
+      track('moma', Promise.resolve(searchMoma(title, artist))),
+      track('wikidata', searchWikidata(title, artist, signal))
     ]);
     clearTimeout(searchTimeoutId);
+    send({ type: 'stage', stage: 'synthesizing' });
 
     const authoritiesConsulted = [tavily, met, aic, moma, europeana, wiki, wikidata].map(r => ({
       name: r.name,
@@ -562,10 +585,12 @@ app.post('/api/verify', rateLimiter, async (req, res) => {
       passportSignature: signPassport({ title, artist })
     };
 
-    res.json(passport);
+    send({ type: 'result', passport });
+    res.end();
   } catch (e) {
     clearTimeout(searchTimeoutId);
-    res.status(500).json({ error: e.message });
+    send({ type: 'error', message: e.message });
+    res.end();
   }
 });
 
